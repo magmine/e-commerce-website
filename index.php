@@ -4,8 +4,6 @@ include 'config.php';
 
 session_start();
 
-$user_id = 1;
-
 
 // if(isset($_POST['add_to_cart'])){
 
@@ -46,16 +44,6 @@ $user_id = 1;
    
 <?php include 'header.php'; ?>
 
-<section class="home">
-
-   <div class="content">
-      <h3>Hand Picked Book to your door.</h3>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi, quod? Reiciendis ut porro iste totam.</p>
-      <a href="about.php" class="white-btn">discover more</a>
-   </div>
-
-</section>
-
 <section class="products">
 
    <h1 class="title">latest products</h1>
@@ -87,24 +75,6 @@ $user_id = 1;
 
    <div class="load-more" style="margin-top: 2rem; text-align:center">
       <a href="shop.php" class="option-btn">load more</a>
-   </div>
-
-</section>
-
-<section class="about">
-
-   <div class="flex">
-
-      <div class="image">
-         <img src="images/about-img.jpg" alt="">
-      </div>
-
-      <div class="content">
-         <h3>about us</h3>
-         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit quos enim minima ipsa dicta officia corporis ratione saepe sed adipisci?</p>
-         <a href="about.php" class="btn">read more</a>
-      </div>
-
    </div>
 
 </section>
