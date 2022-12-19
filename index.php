@@ -44,22 +44,20 @@ function consoleLog($msg) {
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
    <!-- custom css file link  -->
-   <link rel="stylesheet" href="css/style.css">
+   <link rel="stylesheet" href="style.css">
 
 </head>
 <body>
    
 <?php include 'header.php'; ?>
 
-<div class="panier-box">
+
+<div class="content">
+<section>
    <div class="panier">
-      <?php
-         $select_cart_number = mysqli_query($conn, "SELECT * FROM `cart`") or die('query failed');
-         $cart_rows_number = mysqli_num_rows($select_cart_number); 
-      ?>
-      <a href="cart.php"> <i class="fas fa-shopping-cart"></i> <span>(<?php echo $cart_rows_number; ?>)</span> </a>
+      <a href="cart.php" class="panier">Panier</a>
    </div>
-</div>
+</section>
 
 <section class="about">
 
@@ -158,7 +156,7 @@ function consoleLog($msg) {
    </div>
 
 </section>
-
+</div>
 
 <?php include 'footer.php'; ?>
 

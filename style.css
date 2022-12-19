@@ -14,7 +14,8 @@
 }
 
 .content {
-   width: 80vw;
+   width: 70vw;
+   margin: 0 auto;
 }
 
 *{
@@ -311,7 +312,19 @@ section{
    font-size: 2.5rem;
    color:var(--black);
    cursor: pointer;
-   margin-left: 1.5rem;
+   display: flex;
+   text-align: right;
+   justify-content: end;
+   
+   /* margin-left: 1.5rem; */
+}
+
+.panier a {
+   height: fit-content;
+   width: 100px;
+   background-color: var(--light-bg);
+   justify-content: center;
+   border: solid 1px var(--black);
 }
 
 .header .header-2 .flex .icons > *:hover{
