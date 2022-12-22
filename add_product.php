@@ -46,25 +46,35 @@
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
    <!-- custom css file link  -->
-   <link rel="stylesheet" href="css/style.css">
+   <link rel="stylesheet" href="style.css">
 
 </head>
 <body>
 
 <?php include 'header.php'; ?>
-
+<div class="contenue">
 <section class="add-products">
 
    <h1 class="title">Nouveau produit</h1>
 
    <form action="" method="post" enctype="multipart/form-data">
-      <input type="text" name="name" class="box" placeholder="enter product name" required>
-      <input type="number" min="0" name="price" class="box" placeholder="enter product price" required>
-      <input type="file" name="image" accept="image/jpg, image/jpeg, image/png" class="box" required>
-      <input type="submit" value="add product" name="add_product" class="btn">
+        <div class="box">
+            <label for="new-product-name">Nom du produit:</label>
+            <input type="text" name="name" id="new-product-name" placeholder="Nom du produit" required>
+        </div>
+        <div class="box">
+            <label for="new-product-price">Prix du produit:</label>
+            <input type="number" min="0" id="new-product-price" name="price" class="box" placeholder="Prix du produit" required>
+        </div>
+        <div class="box">
+            <label for="new-product-image">Image du produit:</label>
+            <input type="file" name="image" id="new-product-image" accept="image/jpg, image/jpeg, image/png" class="box" required>
+        </div>
+        <input type="submit" value="ajouter" name="add_product" class="btn submit">
    </form>
 
 </section>
+</div>
 
 <?php include 'footer.php'; ?>
 

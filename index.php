@@ -44,7 +44,7 @@ function consoleLog($msg) {
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
    <!-- custom css file link  -->
-   <link rel="stylesheet" href="style.css">
+   <link rel="stylesheet" href="./style.css">
 
 </head>
 <body>
@@ -52,7 +52,7 @@ function consoleLog($msg) {
 <?php include 'header.php'; ?>
 
 
-<div class="content">
+<div class="contenue">
 <section>
    <div class="panier">
       <a href="cart.php" class="panier">Panier</a>
@@ -71,37 +71,40 @@ function consoleLog($msg) {
 
 </section>
 
-
-<!-- 
-
-   In this section we will create a php filter script to filter the products by category, and availability (stock). The filtered products will be displayed in the same page in  the products section.
- -->
-<section>
+<section class="filter">
+   <div class="description">
+      <p>
+         Personnaliser l'affichage de vos produits
+      </p>
+   </div>
    <form action="" method="post" enctype="multipart/form-data">
-      <h3>Filter</h3>
       <div class="select">
+         <label for="category">Par catégorie</label>
          <select name="category" id="category">
-            <option value="all">All Categories</option>
+            <!-- <option value=""></option> -->
+            <option value="all">Tous</option>
             <option value="ENFANT">ENFANT</option>
             <option value="ADULTE">ADULTE</option>
          </select>
       </div>
       <div class="select">
+         <label for="availability">Par disponibilité</label>
          <select name="availability" id="availability">
-            <option value="all">All Availability</option>
+            <!-- <option value=""></option> -->
+            <option value="all">Tous</option>
             <option value="in">In Stock</option>
             <option value="out">Out of Stock</option>
          </select>
       </div>
-      <input type="submit" value="filter" name="filter" class="btn">
+      <input type="submit" value="filter" name="filter" class="filter-btn filter-btn-form">
    </form>
-   <button class="btn" onclick="window.location.href='add_product.php'">Nouveau produit</button>
+   <div class="filter-add-to-cart">
+      <label for="filter-add-to-cart">Nouveau produit: </label>
+      <button class="filter-btn filter-btn-add" id="filter-add-to-cart" onclick="window.location.href='add_product.php'">+</button>
+   </div>
 </section>
 
 <section class="products">
-
-   <h1 class="title">latest products</h1>
-
    <div class="box-container">
       <?php
          $select_products_query = mysqli_query($conn, "SELECT * FROM `products`") or die('query failed');
