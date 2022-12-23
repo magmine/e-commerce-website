@@ -14,21 +14,22 @@ if(isset($_POST['submit'])){
 
       $row = mysqli_fetch_assoc($select_users);
 
-      if($row['user_type'] == 'admin'){
+      // if($row['user_type'] == 'admin'){
 
-         $_SESSION['admin_name'] = $row['name'];
-         $_SESSION['admin_email'] = $row['email'];
-         $_SESSION['admin_id'] = $row['id'];
-         header('location:admin_page.php');
+      //    $_SESSION['admin_name'] = $row['name'];
+      //    $_SESSION['admin_email'] = $row['email'];
+      //    $_SESSION['admin_id'] = $row['id'];
+      //    header('location:admin_page.php');
 
-      }elseif($row['user_type'] == 'user'){
+      // }elseif($row['user_type'] == 'user'){
 
          $_SESSION['user_name'] = $row['name'];
          $_SESSION['user_email'] = $row['email'];
          $_SESSION['user_id'] = $row['id'];
+         echo $_SESSION['user_name'];
          header('location:index.php');
 
-      }
+      // }
 
    }else{
       $message[] = 'incorrect email or password!';
@@ -71,11 +72,11 @@ if(isset($message)){
 <div class="form-container">
 
    <form action="" method="post">
-      <h3>login now</h3>
-      <input type="email" name="email" placeholder="enter your email" required class="box">
-      <input type="password" name="password" placeholder="enter your password" required class="box">
-      <input type="submit" name="submit" value="login now" class="btn">
-      <p>don't have an account? <a href="register.php">register now</a></p>
+      <h3>Se connecter</h3>
+      <input type="email" name="email" placeholder="Entrez votre e-mail" required class="box">
+      <input type="password" name="password" placeholder="Entrez votre mot de pass" required class="box">
+      <input type="submit" name="submit" value="Se connecter" class="btn">
+      <p>Vous avez une compte? <a href="register.php">S'abonner</a></p>
    </form>
 
 </div>

@@ -317,6 +317,43 @@ section{
    margin-left: 1.5rem;
 }
 
+.cart {
+   margin: auto;
+}
+
+.cart .cart-items {
+   font-size: 1.4rem;
+   display: flex;
+   flex-direction: column;
+   max-width: 450px;
+   margin: auto;
+   border: 2px solid var(--black);
+   gap: 6rem;
+   /* text-align: center; */
+}
+
+.cart .cart-items table {
+   text-align: center;
+}
+
+.cart .cart-items table thead{
+   background-color: var(--light-color);
+}
+
+.cart .cart-items table .row {
+   background-color: var(--light-bg);
+}
+
+
+.cart .cart-items table .name {
+   text-align: left;
+   padding-left: 1rem;
+}
+
+.cart .cart-total {
+   text-align: right;
+}
+
 .add-products {
    display: flex;
    flex-direction: column;

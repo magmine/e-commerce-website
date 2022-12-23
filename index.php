@@ -3,7 +3,7 @@
 include 'config.php';
 
 session_start();
-
+$user_id = $_SESSION['user_id'];
 
 if(isset($_POST['add_to_cart'])){
 
@@ -12,12 +12,12 @@ if(isset($_POST['add_to_cart'])){
    $product_image = $_POST['product_image'];
    $product_quantity = $_POST['product_quantity'];
 
-   $check_cart_numbers = mysqli_query($conn, "SELECT * FROM `cart` WHERE name = '$product_name'") or die('query failed');
+   $check_cart_numbers = mysqli_query($conn, "SELECT * FROM `cart` WHERE name = '$product_name' and user_id='$user_id'") or die('query failed');
 
    if(mysqli_num_rows($check_cart_numbers) > 0){
       $message[] = 'already added to cart!';
    }else{
-      mysqli_query($conn, "INSERT INTO `cart`(user_id, name, price, quantity, image) VALUES('1', '$product_name', '$product_price', '$product_quantity', '$product_image')") or die('query failed');
+      mysqli_query($conn, "INSERT INTO `cart`(user_id, name, price, quantity, image) VALUES($user_id, '$product_name', '$product_price', '$product_quantity', '$product_image')") or die('query failed');
       $message[] = 'product added to cart!';
    }
 
@@ -115,22 +115,16 @@ function consoleLog($msg) {
             // $select_products_query = mysqli_query($conn, "SELECT * FROM `products`") or die('query failed');
             if($category == 'all' && $available == 'all'){
                $select_products_query = mysqli_query($conn, "SELECT * FROM `products`") or die('query failed');
-               consoleLog("Lol $category 1");
             }else if($category == 'all' && $available == 'in'){
                $select_products_query = mysqli_query($conn, "SELECT * FROM `products` WHERE `stock` > 0") or die('query failed');
-               consoleLog("Lol $category 2");
             }else if($category == 'all' && $available == 'out'){
                $select_products_query = mysqli_query($conn, "SELECT * FROM `products` WHERE `stock` = 0") or die('query failed');
-               consoleLog("Lol $category 3");
             }else if($category != 'all' && $available == 'all'){
                $select_products_query = mysqli_query($conn, "SELECT * FROM `products` WHERE `category`='$category'") or die('query failed');
-               consoleLog("Lol $category 4");
             }else if($category != 'all' && $available == 'in'){
                $select_products_query = mysqli_query($conn, "SELECT * FROM `products` WHERE `category` = '$category' AND `stock` > 0") or die('query failed');
-               consoleLog("Lol $category 5");
             }else if($category != 'all' && $available == 'out'){
                $select_products_query = mysqli_query($conn, "SELECT * FROM `products` WHERE `category` = '$category' AND `stock` = 0") or die('query failed');
-               consoleLog("Lol $category 6");
             }
          }
          if(mysqli_num_rows($select_products_query) > 0){
@@ -138,13 +132,9 @@ function consoleLog($msg) {
       ?>
             <form action="" method="post" class="box">
                <a href="details_produit.php?id=<?php echo $fetch_products['id']; ?>"><img class="image" src="uploaded_img/<?php echo $fetch_products['image']; ?>" alt=""></a>
-               <div class="name"><?php echo $fetch_products['name']; ?></div>
-               <div class="price">$<?php echo $fetch_products['price']; ?>/-</div>
-               <input type="number" min="1" name="product_quantity" value="1" class="qty">
-               <input type="hidden" name="product_name" value="<?php echo $fetch_products['name']; ?>">
-               <input type="hidden" name="product_price" value="<?php echo $fetch_products['price']; ?>">
-               <input type="hidden" name="product_image" value="<?php echo $fetch_products['image']; ?>">
-               <input type="submit" value="add to cart" name="add_to_cart" class="btn">
+               <div class="name"><?php echo $fetch_products['name']; ?>, $<?php echo $fetch_products['price']; ?></div>
+               <!-- <div class="price">$<?php echo $fetch_products['price']; ?>/-</div> -->
+               <!-- <input type="submit" value="add to cart" name="add_to_cart" class="btn"> -->
             </form>
       <?php
             }
@@ -152,10 +142,6 @@ function consoleLog($msg) {
             echo '<p class="empty">Aucun produit disponible!</p>';
          }
       ?>
-   </div>
-
-   <div class="load-more" style="margin-top: 2rem; text-align:center">
-      <a href="shop.php" class="option-btn">load more</a>
    </div>
 
 </section>

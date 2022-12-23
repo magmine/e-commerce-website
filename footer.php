@@ -3,16 +3,16 @@
    <div class="box-container">
 
       <div class="box">
-         <h3>quick links</h3>
-         <a href="index.php">home</a>
-         <a href="about.php">about</a>
+         <h3>Nos produits</h3>
+         <a href="index.php">Par catégorie</a>
+         <a href="index.php">Par disponibilité</a>
       </div>
 
       <div class="box">
-         <h3>extra links</h3>
-         <a href="login.php">login</a>
-         <a href="register.php">register</a>
-         <a href="cart.php">cart</a>
+         <h3>A propos</h3>
+         <a href="login.php">Se connecter</a>
+         <a href="register.php">S'abonner</a>
+         <a href="contact.php">Nous contacter</a>
       </div>
    </div>
 </section>

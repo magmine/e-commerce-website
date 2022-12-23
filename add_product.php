@@ -7,6 +7,8 @@
 
         $name = mysqli_real_escape_string($conn, $_POST['name']);
         $price = $_POST['price'];
+        $category = $_POST['category'];
+        $stock = $_POST['stock'];
         $image = $_FILES['image']['name'];
         $image_size = $_FILES['image']['size'];
         $image_tmp_name = $_FILES['image']['tmp_name'];
@@ -15,9 +17,9 @@
         $select_product_name = mysqli_query($conn, "SELECT name FROM `products` WHERE name = '$name'") or die('query failed');
 
         if(mysqli_num_rows($select_product_name) > 0){
-        $message[] = 'product name already added';
+            $message[] = 'product name already added';
         }else{
-        $add_product_query = mysqli_query($conn, "INSERT INTO `products`(name, price, image) VALUES('$name', '$price', '$image')") or die('query failed');
+            $add_product_query = mysqli_query($conn, "INSERT INTO `products`(name, price, image, category, stock) VALUES('$name', '$price', '$image', '$category', '$stock')") or die('query failed');
 
         if($add_product_query){
             if($image_size > 2000000){
@@ -65,6 +67,17 @@
         <div class="box">
             <label for="new-product-price">Prix du produit:</label>
             <input type="number" min="0" id="new-product-price" name="price" class="box" placeholder="Prix du produit" required>
+        </div>
+        <div class="box">
+            <label for="categorie">Catégorie:</label>
+            <select name="category" id="category" default="ADULTE" required>
+                <option value="ADULTE">ADULTE</option>
+                <option value="ENFANT">ENFANT</option>
+            </select>
+        </div>
+        <div class="box">
+            <label for="stock">Stock:</label>
+            <input type="number" min="1" id="stock" name="stock" class="box" value="1" placeholder="Prix du produit" required>
         </div>
         <div class="box">
             <label for="new-product-image">Image du produit:</label>
